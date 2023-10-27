@@ -263,7 +263,7 @@ def train(student, train_loaders, test_loaders, unlabelled_train_loaders, args):
                     best_train_acc_all = all_acc
 
                 args.logger.info(f'Exp Name: {args.exp_name} Exp id: {args.exp_id}')
-                best_pstr = f'Metrics with best model on test set: '
+                best_pstr = f'Metrics with best model on train set: '
                 output_dict = best_output_test if args.eval_setting == 'inductive' else best_output
                 for k, v in output_dict.items():
                     best_pstr += f'{k}: {v:.4f} '
