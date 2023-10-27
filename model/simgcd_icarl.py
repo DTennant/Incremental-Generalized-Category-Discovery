@@ -378,6 +378,7 @@ if __name__ == "__main__":
     
     # NOTE: Hardcoded image size as we do not finetune the entire ViT model
     args.image_size = 224
+    args.mlp_out_dim = 10000
 
     # ----------------------
     # HOW MUCH OF BASE MODEL TO FINETUNE
@@ -410,7 +411,7 @@ if __name__ == "__main__":
 
     # Reload the model to be icarl
     # model = iCarlNet(backbone, projector, args).to(device)
-    projector = DINOHead(in_dim=768, out_dim=10000, nlayers=3)
+    projector = DINOHead(in_dim=768, out_dim=args.mlp_out_dim, nlayers=3)
     model = SNNDensityNet(backbone, projector, args).to(device)
     args.logger.info('model build')
     # __import__("ipdb").set_trace()
